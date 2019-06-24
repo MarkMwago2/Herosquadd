@@ -1,19 +1,18 @@
 {{#partial "content"}}
-   {{#if editCategory}}
-       <h1>Edit this category!</h1>
-       <form action="/categories/{{category.id}}" method="post">
-         <label for="name">Edit this category's name</label>
-         <input id="newCategoryName" name="newCategoryName" type="text" value="{{category.name}}">
-         <button type="submit" class="btn btn-default">Go!</button>
-       </form>
-  {{else}}
-       <h1>Add a new Category!</h1>
-       <form action="/categories" method="post">
-         <label for="name">Category Name</label>
-         <input id="name" name="name" type="text">
-         <button type="submit" class="btn btn-default">Go!</button>
-       </form>
-   {{/if}}
+   <table style="width: 60%; margin: 0px auto;" class="table table-striped table-dark">
+
+   			    <tr>
+   			      <th scope="col"> </th>
+   			      <th scope="col">Name</th>
+   			      <th scope="col">Age</th>
+   			      <th scope="col">Special Powers</th>
+   			      <th scope="col">Weakness</th>
+   			      <th scope="col">Squad</th>
+   			    </tr>
+
+
+
+   			</table>
 {{/partial}}
 
 {{> layout.hbs}}
