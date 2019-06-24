@@ -30,7 +30,23 @@ public class App {
             String weakness =request.queryParams("weakness");
             Hero newHero = new Hero(name,age,specialPowers,weakness);
             model.put("templates","templates/success.hbs");
+            return new ModelAndView(model,"success.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/heroes",(request,response)->{
+            Map <String,Object> model = new HashMap<String,Object>();
+            model.put("heroes",Hero.all());
+            model.put("templates","templates/heroes.hbs");
             return new ModelAndView(model,"heroes.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/hero/:id",(request,response)->{
+            Map<String,Object>	model = new HashMap<>();
+            Hero hero =Hero.find(Integer.parseInt(request.params(":id")));
+            model.put("heroes",request.session().attributes());
+            model.put("hero",hero);
+            model.put("templates","templates/hero.hbs");
+            return new ModelAndView(model,"hero.hbs");
         },new HandlebarsTemplateEngine());
     }
 }
