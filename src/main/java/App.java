@@ -17,9 +17,9 @@ public class App {
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            ArrayList<Hero> heroes = request.session().attribute("heroes");
-            model.put("heroes", heroes);
-            model.put("templates", "templates/addnewhero.hbs");
+            ArrayList<Hero> heroes = request.session().attribute("addnewhero");
+            model.put("addnewhero", heroes);
+            model.put("templates", "addnewhero.hbs");
             return new ModelAndView(model, layout);
         }, new HandlebarsTemplateEngine());
 
