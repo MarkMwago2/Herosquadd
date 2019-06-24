@@ -12,15 +12,13 @@ public class App {
 
     public static void main(String[] args) {
         staticFileLocation("/public");
-        String layout = "templates/layout.hbs";
 
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             ArrayList<Hero> heroes = request.session().attribute("addnewhero");
-            model.put("addnewhero", heroes);
-            model.put("templates", "addnewhero.hbs");
-            return new ModelAndView(model, layout);
+            model.put("heroes", heroes);
+            return new ModelAndView(model, "addnewhero.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
