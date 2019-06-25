@@ -1,0 +1,31 @@
+{{#partial "styles"}}
+    <link rel='stylesheet' href='/css/app.css'>
+{{/partial}}
+
+{{#partial "content"}}
+
+    <h1>Create your Squad!</h1>
+
+    <p>Add a new Squad</p>
+
+    <form action="/squad/new" method="POST" class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" class="form-control">
+
+        <label for="squadSize">Squad Size</label>
+        <input id="squadSize" name="squadSize" type="text" class="form-control">
+
+        <label for="cause">Cause</label>
+        <input id="cause" name="cause" type="text" class="form-control"><br>
+
+
+        <button type="submit" class="btn btn-default">Add Squad</button>
+    </form>
+    <div class="button-all">
+        <a href="/squad/list" class="btn btn-half">View Squads</a>
+    </div>
+
+
+{{/partial}}
+
+{{> layout.hbs}}
