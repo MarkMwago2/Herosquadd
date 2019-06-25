@@ -1,63 +1,33 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Squad {
-    private String mName;
-    private int mMaxSize;
-    private String mCause;
-    private static List<Squad> instances = new ArrayList<>();
-    private int mId;
-    private List<Hero> mHeros;
+    private String name;
+    private int squadSize;
+    private String cause;
+    private static ArrayList<Squad> instances = new ArrayList<>();
 
-    public Squad(String name, int maxSize, String cause) {
-        mName = name;
-        mMaxSize = maxSize;
-        mCause = cause;
+    public Squad(String name, int squadSize, String cause) {
+        this.name = name;
+        this.squadSize = squadSize;
+        this.cause = cause;
         instances.add(this);
-        mId = instances.size();
-        mHeros = new ArrayList<Hero>();
+
     }
 
-    public String getmName() {
-        return mName;
-    }
-
-    public int getmMaxSize() {
-        return mMaxSize;
-    }
-
-    public String getmCause() {
-
-        return mCause;
-    }
-
-    public static List<Squad> all() {
-
+    public static ArrayList<Squad> getInstances() {
         return instances;
     }
 
-    public int getmId() {
-
-        return mId;
+    public String getName(){
+        return name;
     }
-
-    public static Squad find(int id) {
-        try {
-            return instances.get(id - 1);
-        } catch (IndexOutOfBoundsException exception) {
-            return null;
-        }
+    public int getSquadSize(){
+        return squadSize;
     }
-
-    public static void clear()
-    {
-        instances.clear();
+    public String getCause(){
+        return cause;
     }
-    public List<Hero> getHeroes() {
-
-        return mHeros;
-    }
-    public void addHero(Hero hero) {
-        mHeros.add(hero);
+    public static ArrayList<Squad> getAll(){
+        return instances;
     }
 }

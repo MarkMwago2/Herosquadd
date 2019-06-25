@@ -60,5 +60,12 @@ public class App {
             model.put("template", "templates/newsquad.vtl");
             return new ModelAndView(model, "newsquad.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/squads", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("heroes",Hero.all());
+            model.put("template", "templates/squads.hbs");
+            return new ModelAndView(model, "squads.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }

@@ -1,55 +1,68 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Hero {
-    private String newName;
-    private int newAge;
-    private int mId;
-    private String newSpecialPowers;
-    private String newWeakness;
-    private  static List<Hero> instances = new ArrayList<Hero>();
+    private String name;
+    private int age;
+    private String specialPowers;
+    private String weakness;
+    private static ArrayList<Hero> instances = new ArrayList<>();
+    private LocalDateTime createdAt;
+    private int id;
 
-    public Hero(String name,int age,String specialPowers,String weakness){
-        newName=name;
-        newAge=age;
-        newSpecialPowers=specialPowers;
-        newWeakness=weakness;
+
+    public Hero (String name, int age, String specialPowers, String weakness){
+        this.name = name;
+        this.age= age;
+        this.specialPowers= specialPowers;
+        this.weakness = weakness;
         instances.add(this);
-        mId= instances.size();
+        this.createdAt = LocalDateTime.now();
+        this.id = instances.size();
+
     }
 
-    public String getNewName() {
-        return newName;
+    public String getName() {
+        return name;
+    }
+    public int getAge(){
+        return age;
     }
 
-    public int getNewAge() {
-        return newAge;
+    public String getSpecialPowers(){
+        return specialPowers;
     }
 
-    public String getNewSpecialPowers() {
-
-        return newSpecialPowers;
-    }
-
-    public String getNewWeakness() {
-
-        return newWeakness;
-    }
-
-    public static  List<Hero> all(){
-
+    public static ArrayList<Hero> getAll(){
         return instances;
     }
 
-    public int getId() {
-
-        return mId;
+    public static void clearAllPosts(){
+        instances.clear();
     }
 
-    public static Hero find(int id) {
-
-        return instances.get(id - 1);
+    public String getWeakness(){
+        return weakness;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public int getId(){
+        return id;
+    }
+    public static Hero findById(int id){
+        return instances.get(id-1);
+    }
+
+    public void update(String name, int age, String specialPowers, String weakness) {
+        this.name = name;
+        this.age= age;
+        this.specialPowers= specialPowers;
+        this.weakness= weakness;
+    }
+    public void deleteHero(){
+        instances.remove(id-1);
+    }
 
 }

@@ -1,48 +1,125 @@
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.time.LocalDateTime;
+
 import static org.junit.Assert.*;
 
 public class HeroTest {
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
     @Test
-    public void Hero_instantiatesCorrectly_true() {
-        Hero myHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-        assertEquals(true, myHero instanceof Hero);
+    public void NewHeroObjectGetsCorrectlyCreated_true() throws Exception {
+        Hero hero= new Hero("Superman", 30, "flying", "Kryptonite");
+        assertEquals(true, hero instanceof Hero);
+    }
+    public Hero setupNewHero(){
+        return new Hero ("Superman", 30, "flying", "Kryptonite");
+    }
+
+    @Test
+    public void HeroInstantiatesWithName_true() throws Exception{
+        Hero myHero= setupNewHero();
+        assertEquals("Superman", myHero.getName() );
+    }
+
+    @Test
+    public void HeroInstantiatesWithAge_true() throws Exception{
+        Hero myHero= setupNewHero();
+        assertEquals(30, myHero.getAge());
     }
     @Test
-    public void Hero_instantiatesWithName_String() {
-        Hero myHero = new Hero("Mike", 16, "fire", "cats");
-        assertEquals("Mike", myHero.getNewName());
+    public void HeroInstantiatesWithSpecialPowers_true() throws Exception{
+        Hero myHero= setupNewHero();
+        assertEquals("flying", myHero.getSpecialPowers() );
     }
     @Test
-    public void Hero_instantiatesWithAge_Integer() {
-        Hero myHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-        assertEquals(16, myHero.getNewAge());
+    public void HeroInstantiatesWithWeakness_true() throws Exception{
+        Hero myHero= setupNewHero();
+        assertEquals("Kryptonite", myHero.getWeakness() );
     }
-    //    @Test
-//    public void Hero_instantiatesWithId_Integer() {
-//        Hero myHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-//        assertEquals(1, myHero.getmId());
-//    }
+
+    @After
+    public void tearDown() throws Exception {
+        Hero.clearAllPosts();
+    }
+
     @Test
-    public void Hero_instantiatesWithSpecialPowers_String() {
-        Hero myHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-        assertEquals("fire", myHero.getNewSpecialPowers());
+    public void AllPostsAreCorrectlyReturned_true() {
+        Hero myHero= setupNewHero();
+        Hero otherHero = new Hero ("Joker", 50, "laughter", "light");
+        assertEquals(2, Hero.getAll().size());
+    }
+
+    @Test
+    public void AllPostsContainsAllPosts_true() {
+        Hero myHero= setupNewHero();
+        Hero otherHero = new Hero ("Joker", 50, "laughter", "light");
+        assertTrue(Hero.getAll().contains(myHero));
+        assertTrue(Hero.getAll().contains(otherHero));
+    }
+
+    @Test
+    public void getCreatedAt_instantiatesWithCurrentTime_today() throws Exception{
+        Hero myHero = setupNewHero();
+        assertEquals(LocalDateTime.now().getDayOfWeek(), myHero.getCreatedAt().getDayOfWeek());
     }
     @Test
-    public void Hero_instantiatesWithWeakness_String() {
-        Hero myHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-        assertEquals("cats", myHero.getNewWeakness());
+    public void getId_postsInstantiateWithAnID_1() throws Exception{
+        Hero.clearAllPosts();
+        Hero myHero = setupNewHero();
+        assertEquals(1, myHero.getId());
     }
     @Test
-    public void all_returnsAllInstancesOfHero_true() {
-        Hero firstHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-        Hero secondHero = new Hero("cmfdbjk" ,4 ,"air" ,"dogs");
-        assertEquals(true, Hero.all().contains(firstHero));
-        assertEquals(true, Hero.all().contains(secondHero));
+    public void findReturnsCorrectHero() throws Exception {
+        Hero myHero = setupNewHero();
+        assertEquals(1, Hero.findById(myHero.getId()).getId());
+    }
+
+    @Test
+    public void findReturnsCorrectPostWhenMoreThanOnePostExists() throws Exception {
+        Hero myHero = setupNewHero();
+        Hero otherPost = new Hero("Thor",30,"Hammer", "flying");
+        assertEquals(2, Hero.findById(otherPost.getId()).getId());
     }
     @Test
-    public void find_returnsHeroWithSameId_secondHero() {
-        Hero firstHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-        Hero secondHero = new Hero("Mike" ,16 ,"fire" ,"cats");
-        assertEquals(Hero.find(secondHero.getId()), secondHero);
+    public void updateChangesHeroContent() throws Exception {
+        Hero myHero = setupNewHero();
+        String formerName = myHero.getName();
+        int formerAge = myHero.getAge();
+        String formerSpecialPowers= myHero.getSpecialPowers();
+        String formerWeakness= myHero.getWeakness();
+
+        LocalDateTime formerDate = myHero.getCreatedAt();
+        int formerId = myHero.getId();
+
+        myHero.update("Ironman", 35, "bulletproof", "love");
+
+        assertEquals(formerId, myHero.getId());
+        assertEquals(formerDate, myHero.getCreatedAt());
+        assertNotEquals(formerName, myHero.getName());
+        assertNotEquals(formerAge, myHero.getAge());
+        assertNotEquals(formerSpecialPowers, myHero.getSpecialPowers());
+        assertNotEquals(formerWeakness, myHero.getWeakness());
+    }
+
+    @Test
+    public void deleteDeletesASpecificHero() throws Exception {
+        Hero myHero = setupNewHero();
+        Hero otherHero = new Hero("Ironman", 35, "bulletproof", "love");
+        myHero.deleteHero();
+        assertEquals(1, Hero.getAll().size());
+        assertEquals(Hero.getAll().get(0).getId(), 2);
+    }@Test
+    public void deleteAllHerosDeletesAllHeros() throws Exception {
+        Hero myHero = setupNewHero();
+        Hero otherHero = setupNewHero();
+
+        Hero.clearAllPosts();
+        assertEquals(0, Hero.getAll().size());
     }
 }
