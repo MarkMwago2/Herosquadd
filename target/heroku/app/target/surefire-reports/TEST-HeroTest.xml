@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="HeroTest" time="0.027" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="HeroTest" time="0.034" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.2+9"/>
     <property name="sun.boot.library.path" value="/home/mark/.sdkman/candidates/java/11.0.2-open/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/mark/Herosquadd"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/mark/HeroIP"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/mark/Herosquadd"/>
+    <property name="user.dir" value="/home/mark/HeroIP"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="11.0.2+9"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
@@ -62,7 +62,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="HeroTest" name="NewHeroObjectGetsCorrectlyCreated_true" time="0.025"/>
+  <testcase classname="HeroTest" name="NewHeroObjectGetsCorrectlyCreated_true" time="0.021"/>
   <testcase classname="HeroTest" name="HeroInstantiatesWithName_true" time="0"/>
   <testcase classname="HeroTest" name="updateChangesHeroContent" time="0"/>
   <testcase classname="HeroTest" name="getId_postsInstantiateWithAnID_1" time="0"/>
@@ -70,10 +70,10 @@
   <testcase classname="HeroTest" name="deleteAllHerosDeletesAllHeros" time="0"/>
   <testcase classname="HeroTest" name="findReturnsCorrectHero" time="0"/>
   <testcase classname="HeroTest" name="HeroInstantiatesWithAge_true" time="0"/>
-  <testcase classname="HeroTest" name="getCreatedAt_instantiatesWithCurrentTime_today" time="0.001"/>
+  <testcase classname="HeroTest" name="getCreatedAt_instantiatesWithCurrentTime_today" time="0.012"/>
   <testcase classname="HeroTest" name="findReturnsCorrectPostWhenMoreThanOnePostExists" time="0"/>
-  <testcase classname="HeroTest" name="HeroInstantiatesWithWeakness_true" time="0"/>
+  <testcase classname="HeroTest" name="HeroInstantiatesWithWeakness_true" time="0.001"/>
   <testcase classname="HeroTest" name="AllPostsAreCorrectlyReturned_true" time="0"/>
   <testcase classname="HeroTest" name="deleteDeletesASpecificHero" time="0"/>
-  <testcase classname="HeroTest" name="AllPostsContainsAllPosts_true" time="0.001"/>
+  <testcase classname="HeroTest" name="AllPostsContainsAllPosts_true" time="0"/>
 </testsuite>
