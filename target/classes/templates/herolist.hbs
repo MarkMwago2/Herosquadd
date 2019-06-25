@@ -1,0 +1,22 @@
+{{#partial "content"}}
+
+    <h1>Heroes</h1>
+
+    {{#if heroes}}
+        {{#each heroes}}
+            <div class="list">
+                <p>Name: <span>{{name}}</span></p>
+                <p>Age: {{age}}</p>
+                <p>Super Powers: {{specialPowers}}</p>
+                <p>Weakness: {{weakness}}</p>
+<!--                <p><a href="/heros/{{id}}">Read More...</a> </p>-->
+
+            </div>
+
+        {{/each}}
+        <p class="text-muted"><a href="/heros/delete">DELETE ALL POSTS</a></p>
+    {{else}}
+        <p>No Heroes yet!</p>
+    {{/if}}
+{{/partial}}
+{{>layout.hbs}}
