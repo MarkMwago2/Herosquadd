@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="HeroTest" time="0.034" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="HeroTest" time="0.107" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.2+9"/>
@@ -62,7 +62,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="HeroTest" name="NewHeroObjectGetsCorrectlyCreated_true" time="0.021"/>
+  <testcase classname="HeroTest" name="NewHeroObjectGetsCorrectlyCreated_true" time="0.105"/>
   <testcase classname="HeroTest" name="HeroInstantiatesWithName_true" time="0"/>
   <testcase classname="HeroTest" name="updateChangesHeroContent" time="0"/>
   <testcase classname="HeroTest" name="getId_postsInstantiateWithAnID_1" time="0"/>
@@ -70,9 +70,9 @@
   <testcase classname="HeroTest" name="deleteAllHerosDeletesAllHeros" time="0"/>
   <testcase classname="HeroTest" name="findReturnsCorrectHero" time="0"/>
   <testcase classname="HeroTest" name="HeroInstantiatesWithAge_true" time="0"/>
-  <testcase classname="HeroTest" name="getCreatedAt_instantiatesWithCurrentTime_today" time="0.012"/>
-  <testcase classname="HeroTest" name="findReturnsCorrectPostWhenMoreThanOnePostExists" time="0"/>
-  <testcase classname="HeroTest" name="HeroInstantiatesWithWeakness_true" time="0.001"/>
+  <testcase classname="HeroTest" name="getCreatedAt_instantiatesWithCurrentTime_today" time="0.001"/>
+  <testcase classname="HeroTest" name="findReturnsCorrectPostWhenMoreThanOnePostExists" time="0.001"/>
+  <testcase classname="HeroTest" name="HeroInstantiatesWithWeakness_true" time="0"/>
   <testcase classname="HeroTest" name="AllPostsAreCorrectlyReturned_true" time="0"/>
   <testcase classname="HeroTest" name="deleteDeletesASpecificHero" time="0"/>
   <testcase classname="HeroTest" name="AllPostsContainsAllPosts_true" time="0"/>
